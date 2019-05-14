@@ -7,7 +7,7 @@ public class Stasiun extends Petak {
 //    double hargaSewaTanah ;
 //    double hargaHipotik;
 //    boolean isTerjual;
-    public Stasiun(int no, String nama,String deskripsi,int harga){
+    public Stasiun(int no, String nama,String deskripsi,int harga,String keterangan){
         this.isTerjual = false;
         this.noPetak = no;
         this.namaPetak = nama;
@@ -19,5 +19,6 @@ public class Stasiun extends Petak {
         this.hargaHipotik = 10000;
         this.jualBeli = 1;
         this.hargaTanah = harga;
+        this.keterangan = keterangan;
     }
 }

@@ -5,12 +5,13 @@ public class Perusahaan extends Petak {
 //    public double hargaSewaTanah ;
 //    public double hargaHipotik;
 //    public boolean isTerjual;
-    public Perusahaan(int no, String nama, String deskripsi,int harga){
+    public Perusahaan(int no, String nama, String deskripsi,int harga,String keterangan){
         this.noPetak = no;
         this.namaPetak = nama;
         this.deskripsi = deskripsi;
         this.jualBeli = 1;
         this.hargaTanah = harga;
+        this.keterangan = keterangan;
     }
 
     public void hitungSewa(){

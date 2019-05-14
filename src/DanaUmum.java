@@ -1,8 +1,9 @@
-public class DanaUmum extends PetakPijakan {
-    public DanaUmum(int no,String nama, String deskripsi){
+public class DanaUmum extends Petak {
+    public DanaUmum(int no,String nama, String deskripsi,String keterangan){
         this.noPetak = no;
         this.namaPetak = nama;
         this.deskripsi = deskripsi;
         this.jualBeli = 0;
+        this.keterangan = keterangan;
     }
 }

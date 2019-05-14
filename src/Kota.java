@@ -13,7 +13,7 @@ public class Kota extends Petak{
 //    double hargaSewaTanah ;
 //    double hargaHipotik;
 //    boolean isTerjual;
-    public Kota(int no,String namaPetak,String deksripsi,double hargaTanah,double hargaSewaTanah,double hargaSewa1Rumah,double hargaSewa2Rumah,double hargaSewa3Rumah,double hargaSewa4Rumah,double hargaSewaHotel,double hargaHipotik){
+    public Kota(int no,String namaPetak,String deksripsi,double hargaTanah,double hargaSewaTanah,double hargaSewa1Rumah,double hargaSewa2Rumah,double hargaSewa3Rumah,double hargaSewa4Rumah,double hargaSewaHotel,double hargaHipotik,String keterangan){
         this.noPetak = no;
         this.namaPetak = namaPetak;
         this.deskripsi = deksripsi;
@@ -32,7 +32,8 @@ public class Kota extends Petak{
         this.isTerjual = false;
         this.isAdaRumah = false;
         this.jualBeli = 1;
-
+        this.keterangan = keterangan;
+        this.namaPemilik="none";
     }
 
 
@@ -74,4 +75,5 @@ public class Kota extends Petak{
     this.isTerjual = true;
     this.namaPemilik = nama;
     }
+
 }
