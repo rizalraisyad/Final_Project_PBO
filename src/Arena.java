@@ -75,7 +75,7 @@ public class Arena {
                     if(search.noPetak == playerTurn.posisi){
                         System.out.println("Sekarang Anda Berada di : "+search.namaPetak);
                         System.out.println("Deskripsi : "+search.deskripsi);
-                        if(search.isTerjual == false && search.jualBeli == 1){
+                        if(search.isTerjual == false && search.jualBeli == 1 && playerTurn.uang>= search.hargaTanah){
                             System.out.println("Harga Tanah/Perusahaan : "+search.hargaTanah);
                             System.out.println("Menu Pilihan");
                             System.out.println("1.Beli Tanah/Perusahaan");
@@ -85,6 +85,7 @@ public class Arena {
                             int pilmenu = scan.nextInt();
                             if(pilmenu == 1){
                                 Asset kartu = new Asset(String.valueOf(search.noPetak),search.namaPetak,search.deskripsi,String.valueOf(search.hargaHipotik));
+                                playerTurn.uang = playerTurn.uang - search.hargaTanah;
                                 playerTurn.tambahAsset(kartu);
                             }else {
                                 break;

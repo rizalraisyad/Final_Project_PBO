@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Player {
-    int uang;
+    double uang;
     String nama="";
     int posisi;
     ArrayList<Asset> arrAsset = new ArrayList<>();
