@@ -1,14 +1,18 @@
-public class Kota extends PetakPijakDibeli{
-    double hargaRumah;
-    double hargaHotel;
-    boolean isAdaRumah;
-    int jumlahrumah;
-    int jumlahkomplek;
-    double hargaSewa1Rumah;
-    double hargaSewa2Rumah;
-    double hargaSewa3Rumah;
-    double hargaSewa4Rumah;
-    double hargaSewaHotel;
+public class Kota extends Petak{
+//    double hargaRumah;
+//    double hargaHotel;
+//    boolean isAdaRumah;
+//    int jumlahrumah;
+//    int jumlahkomplek;
+//    double hargaSewa1Rumah;
+//    double hargaSewa2Rumah;
+//    double hargaSewa3Rumah;
+//    double hargaSewa4Rumah;
+//    double hargaSewaHotel;
+//    double hargaTanah ;
+//    double hargaSewaTanah ;
+//    double hargaHipotik;
+//    boolean isTerjual;
     public Kota(int no,String namaPetak,String deksripsi,double hargaTanah,double hargaSewaTanah,double hargaSewa1Rumah,double hargaSewa2Rumah,double hargaSewa3Rumah,double hargaSewa4Rumah,double hargaSewaHotel,double hargaHipotik){
         this.noPetak = no;
         this.namaPetak = namaPetak;
@@ -27,12 +31,47 @@ public class Kota extends PetakPijakDibeli{
         this.hargaHipotik = hargaHipotik;
         this.isTerjual = false;
         this.isAdaRumah = false;
-    }
-    
-    public void bangunRumah(){
+        this.jualBeli = 1;
 
     }
-    public void bangunHotel(){
 
+
+
+    @Override
+    public int cekstatuspemilik(){
+        super.cekstatuspemilik();
+        int status = 0; // untuk belum terjual
+        if(isTerjual == false){
+            status =0;
+        }else {
+            status =1;
+        }
+        return status;
+    }
+    public void printNamadanDeskripsi(){
+        super.printNamadanDeskripsi();
+        System.out.println("Nama Petak : "+namaPetak);
+        System.out.println("Deskripsi : "+deskripsi);
+    }
+    public void printhitungHargaSewak(){
+        super.printhitungHargaSewak();
+    }
+
+    public void printhitungHargaJual(){
+        super.printhitungHargaJual();
+    }
+
+    public void printcekStatusKepemilikan(){
+        super.printcekStatusKepemilikan();
+        if(isTerjual == false){
+            System.out.println("Belum Terjual");
+        }else {
+            System.out.println("Terjual");
+        }
+    }
+    public void beliKota_Perusahaan(String nama){
+    super.beliKota_Perusahaan(nama);
+    this.isTerjual = true;
+    this.namaPemilik = nama;
     }
 }

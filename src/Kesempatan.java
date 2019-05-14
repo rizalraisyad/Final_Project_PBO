@@ -3,5 +3,6 @@ public class Kesempatan extends PetakPijakan {
         this.noPetak = no;
         this.namaPetak = nama;
         this.deskripsi = deskripsi;
+        this.jualBeli = 0;
     }
 }

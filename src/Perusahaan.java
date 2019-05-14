@@ -1,10 +1,16 @@
-public class Perusahaan extends PetakPijakDibeli {
+public class Perusahaan extends Petak {
     //4 x jumlah angka dadu x satuan uang monopoli terendah Tetapi bila pemain berhenti di salah satu petak perusahaan listrik/ air dan keduanya telah dipunyai oleh salah satu pemain yang lain, maka prosedur membayarnya merupakan 10 x jumlah angka dadu x satuan uang monopoli terendah
     int jumlahPerusahaan;
-    public Perusahaan(int no, String nama, String deskripsi){
+//    public double hargaTanah ;
+//    public double hargaSewaTanah ;
+//    public double hargaHipotik;
+//    public boolean isTerjual;
+    public Perusahaan(int no, String nama, String deskripsi,int harga){
         this.noPetak = no;
         this.namaPetak = nama;
         this.deskripsi = deskripsi;
+        this.jualBeli = 1;
+        this.hargaTanah = harga;
     }
 
     public void hitungSewa(){

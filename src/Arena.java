@@ -45,6 +45,7 @@ public class Arena {
 
 
     public void bermain(){
+        int turn=0;
         System.out.println(player1.nama+"       "+player1.uang);
         System.out.println(player2.nama+"       "+player2.uang);
         loadPetak();
@@ -52,35 +53,58 @@ public class Arena {
         Player playerTurn = player1;
         Player playerWait = player2;
         boolean isSelesai = false;
+
         do{
 
-            System.out.println("\nNama Player "+playerTurn.nama);
+            System.out.println("\nGiliran : "+playerTurn.nama);
             System.out.println("Uang Player "+playerTurn.uang);
             System.out.println("Posisi awal : "+playerTurn.posisi);
             Scanner sc = new Scanner(System.in);
-            System.out.println("Masukkan angka 1 untuk kocok dadu : ");
+            System.out.println("MENU PILIHAN ");
+            System.out.println("1. Untuk Lempar Dadu");
+            System.out.println("2. Untuk Lihat Asset");
             int input = sc.nextInt();
             if(input == 1){
                 playerTurn.Jalan();
                 System.out.println("Posisi Akhir : "+playerTurn.posisi);
+
+                System.out.println("Sekarang Anda Berada di : "+playerTurn.posisi);
+
+
                 for (Petak search : arrPetak){
                     if(search.noPetak == playerTurn.posisi){
                         System.out.println("Sekarang Anda Berada di : "+search.namaPetak);
                         System.out.println("Deskripsi : "+search.deskripsi);
+                        if(search.isTerjual == false && search.jualBeli == 1){
+                            System.out.println("Harga Tanah/Perusahaan : "+search.hargaTanah);
+                            System.out.println("Menu Pilihan");
+                            System.out.println("1.Beli Tanah/Perusahaan");
+                            System.out.println("2.Tidak Beli");
+                            Scanner scan = new Scanner(System.in);
+                            System.out.println("Masukkan angka 1 untuk kocok dadu : ");
+                            int pilmenu = scan.nextInt();
+                            if(pilmenu == 1){
+                                Asset kartu = new Asset(String.valueOf(search.noPetak),search.namaPetak,search.deskripsi,String.valueOf(search.hargaHipotik));
+                                playerTurn.tambahAsset(kartu);
+                            }else {
+                                break;
+                            }
+                        }
                     }
 
                 }
-                System.out.println("Sekarang Anda Berada di : "+playerTurn.posisi);
-                if(playerTurn.posisi/40>0){
-                    playerTurn.uang = playerTurn.uang +50000;
-                }
-                playerTurn.posisi=playerTurn.posisi%40;
-                Player temp = playerTurn;
-                playerTurn = playerWait;
-                playerWait = temp;
-            }else {
+            }else if(input ==2 ){
+                playerTurn.lihatBarang();
+            }else{
                 System.out.println("Retry");
             }
+            if(playerTurn.posisi/40>0){
+                playerTurn.uang = playerTurn.uang +50000;
+            }
+            playerTurn.posisi=playerTurn.posisi%40;
+            Player temp = playerTurn;
+            playerTurn = playerWait;
+            playerWait = temp;
         }while (!isSelesai);
     }
 
@@ -135,21 +159,21 @@ public class Arena {
         oArena.arrPetak.add(KotaCimahi);
         Kota KotaPalembang = new Kota(39,"Kota Palembang","Komplek_H",40000,5000,20000,60000,140000,170000,200000,20000);
         oArena.arrPetak.add(KotaPalembang);
-        Stasiun StasiunBandung = new Stasiun(5,"Stasiun Bandung","Stasiun");
+        Stasiun StasiunBandung = new Stasiun(5,"Stasiun Bandung","Stasiun",20000);
         oArena.arrPetak.add(StasiunBandung);
-        Stasiun StasiunCimahi = new Stasiun(15,"Stasiun Cimahi","Stasiun");
+        Stasiun StasiunCimahi = new Stasiun(15,"Stasiun Cimahi","Stasiun",20000);
         oArena.arrPetak.add(StasiunCimahi);
-        Stasiun StasiunBalapan = new Stasiun(25,"Stasiun Balapan","Stasiun");
+        Stasiun StasiunBalapan = new Stasiun(25,"Stasiun Balapan","Stasiun",20000);
         oArena.arrPetak.add(StasiunBalapan);
-        Stasiun StasiunYogyakarta = new Stasiun(35,"Stasiun Yogyakarta","Stasiun");
+        Stasiun StasiunYogyakarta = new Stasiun(35,"Stasiun Yogyakarta","Stasiun",20000);
         oArena.arrPetak.add(StasiunYogyakarta);
-        Perusahaan PerusahaanListrik = new Perusahaan(12,"Perusahaan Listrik","Perusahaan");
+        Perusahaan PerusahaanListrik = new Perusahaan(12,"Perusahaan Listrik","Perusahaan",15000);
         oArena.arrPetak.add(PerusahaanListrik);
-        Perusahaan PerusahaanAir = new Perusahaan(28,"Perusahaan Air","Perusahaan");
+        Perusahaan PerusahaanAir = new Perusahaan(28,"Perusahaan Air","Perusahaan",15000);
         oArena.arrPetak.add(PerusahaanAir);
         DanaUmum Danaumum1 = new DanaUmum(2,"Dana Umum ke-1","Danaumum");
         oArena.arrPetak.add(Danaumum1);
-        DanaUmum Danaumum2 = new DanaUmum(20,"Dana Umum ke-2","Danaumum");
+        DanaUmum Danaumum2 = new DanaUmum(17,"Dana Umum ke-2","Danaumum");
         oArena.arrPetak.add(Danaumum2);
         DanaUmum Danaumum3 = new DanaUmum(33,"Dana Umum ke-3","Danaumum");
         oArena.arrPetak.add(Danaumum3);
@@ -169,7 +193,8 @@ public class Arena {
         oArena.arrPetak.add(Penjara);
         Start Start = new Start(0,"Start/Awal","Start");
         oArena.arrPetak.add(Start);
-
+        BebasParkir BebasParkir = new BebasParkir(20,"Parkir Bebas","PB");
+        oArena.arrPetak.add(Start);
         Player player1 = new Player("Rizal M"); // siapkan player1
         Player player2 = new Player("Tia H"); // siapkan player2
 
